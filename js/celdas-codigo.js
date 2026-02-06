@@ -126,7 +126,7 @@ document.getElementById('ejecutarCelda').addEventListener('click', () => {
     const salida = celda.querySelector('.resultado-codigo');
 
     if (!celda || !celda.classList.contains('celda-codigo')) {
-        alert('Selecciona una celda de código para ejecutar');
+        mostrarToast("Selecciona una celda de código para ejecutar","warning");
         return;
     }
 

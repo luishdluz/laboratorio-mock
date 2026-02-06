@@ -78,17 +78,17 @@ document.addEventListener("click", function(event) {
 
         if (!fuente) return;
 
-        const archivo = fuente.getAttribute("archivo");
-        const extension = fuente.getAttribute("extension");
+       const archivo = fuente.getAttribute("archivo");
+       const extension = fuente.getAttribute("extension");
 
         // Crear el código personalizado
         const codigo =
-            `from repositorioLocalBanxico import leerArchivo
+          `from repositorioLocalBanxico import leerArchivo
 
 df = leerArchivo("${archivo}", "${extension}")
-print(df.head())`;
+print(HERE)`;
 
-        // Agregar la celda usando tu misma función
+         //Agregar la celda usando tu misma función
         agregarCeldaCodigoDinamica(codigo);
     }
 });
@@ -199,7 +199,7 @@ document.getElementById("btnAgregarArchivo").addEventListener("click", () => {
     const archivoInput = document.getElementById("archivoLocal");
 
     if (!archivoInput.files.length) {
-        alert("Selecciona un archivo.");
+        mostrarToast("Selecciona un archivo","warning");
         return;
     }
 
@@ -239,7 +239,7 @@ document.getElementById("btnAgregarArchivo").addEventListener("click", () => {
     contenedor.appendChild(div);
 
     // Volver a enganchar eventos
-    enlazarEventosFuente(div);
+    //enlazarEventosFuente(div);
 
     // Cerrar modal
     document.getElementById("modalArchivo").classList.add("oculto");
@@ -271,7 +271,7 @@ function enlazarEventosFuente(fuenteItem) {
 from repositorioLocalBanxico import leerArchivo
 
 df = leerArchivo("${archivo}", "${ext}")
-print(df.head())
+print('Se consulto el archivo correctamente...')
       `);
         });
     }

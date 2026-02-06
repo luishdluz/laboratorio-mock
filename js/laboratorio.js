@@ -1,3 +1,10 @@
+$(document).ready(function () {
+    $('#btnGuardarProyecto').on('click', function () {
+        mostrarToast("Se guardo el proyecto correctamente...","success");
+    });
+});
+
+
 document.getElementById('btnAgregarTexto').addEventListener('click', () => {
     const nuevaCelda = crearCeldaTexto();
 
@@ -88,7 +95,7 @@ document.getElementById('btnBorrarCelda').addEventListener('click', () => {
     const celdaActiva = document.querySelector('.celdaActiva');
 
     if (!celdaActiva) {
-        alert('Selecciona una celda para borrar');
+        mostrarToast("Selecciona una celda para borrar","warning");
         return;
     }
 
