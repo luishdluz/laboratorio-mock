@@ -1,0 +1,80 @@
+/* ================= MODAL ================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(3px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 20000;
+}
+
+.modal {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: modalIn 0.3s ease;
+}
+
+.modal h2 {
+    margin: 0 0 10px 0;
+    color: #04b3bb;
+}
+
+.modal input,
+.modal textarea {
+    padding: 10px;
+    border: 2px solid #e2e2e2;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.modal textarea {
+    resize: none;
+    height: 80px;
+}
+
+.modal-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-cancelar {
+    background: #ccc;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-crear {
+    background: #04b3bb;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-crear:hover {
+    background: #039aa0;
+}
+
+@keyframes modalIn {
+    from {
+        transform: scale(.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
