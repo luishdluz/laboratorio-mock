@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="css/contenedor-app.css">
     <!-- Inicio -->
     <link rel="stylesheet" href="css/inicio.css">
+
+    <link rel="stylesheet" href="css/modal-proyecto.css">
+
+    <link rel="stylesheet" href="css/modal-compartir.css">
+
+    <link rel="stylesheet" href="css/notificaciones.css">
   </head>
   <body>
 
@@ -164,11 +170,56 @@
     </div>
 
 
-  <!-- Librerias externas -->
-  <script src="librerias/jquery-3.7.1.min.js"></script>
+    <!-- ================= MODAL NUEVO PROYECTO ================= -->
+    <div id="modalProyecto" class="modal-overlay">
+      <div class="modal">
+        <h2>Proyecto</h2>
+        <label>Nombre del proyecto</label>
+        <input type="text" id="nombreProyecto" placeholder="Ej. Análisis Financiero">
+        <label>Descripción</label>
+        <textarea id="descripcionProyecto" placeholder="Describe el proyecto"></textarea>
+        <div class="modal-botones">
+          <button class="btn-cancelar">Cancelar</button>
+          <button class="btn-crear">Guardar</button>
+        </div>
+      </div>
+    </div>
 
+
+    <div id="modal-compartir" class="modal-overlay">
+      <div class="modal">
+          <h2>Compartir proyecto</h2>
+
+          <div class="autocomplete">
+              <input 
+                  type="text" 
+                  id="buscador-usuarios" 
+                  placeholder="Agregar usuario..."
+                  autocomplete="off"
+              />
+              <div id="resultados-autocomplete" class="autocomplete-list"></div>
+          </div>
+
+          <h4>Usuarios con acceso</h4>
+
+          <div id="lista-usuarios" class="lista-usuarios"></div>
+
+
+          <div id="lista-usuarios" class="lista-usuarios">
+              <!-- usuarios dinámicos -->
+          </div>
+
+          <div class="modal-acciones">
+              <button id="cerrar-compartir" class="btn-cancelar">Cerrar</button>
+          </div>
+      </div>
+  </div>
+
+
+  <!-- Librerias externas -->
+  <script src="js/librerias/jquery-3.7.1.min.js"></script>
   <!-- Script locales -->
-  <script src="js/header.js"></script>
+  <script src="js/notificaciones.js"></script>
   <script src="js/inicio.js"></script>
 
   </body>
