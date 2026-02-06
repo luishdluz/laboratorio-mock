@@ -1,0 +1,521 @@
+/* ================================
+   CARD DEL PORTAL
+================================= */
+.card-app {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(0deg, rgba(245, 246, 250, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    /*background-image: url(../img/gradiente.png);*/
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+/* COLUMNA 1: Logo con borde verde degradado media luna */
+.col-logo {
+    position: relative;
+    flex: 0 0 auto;
+    height: 80px;
+    width: 80px;
+    border-radius: 50% 0 0 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logo-card {
+    max-height: 70px;
+    width: auto;
+}
+
+.logo-card-piif {
+    max-height: 70px;
+    width: auto;
+    display: none;
+}
+
+/* COLUMNA 2: Título */
+.col-titulo {
+    flex: 1 1 auto;
+    text-align: left;
+}
+
+.col-titulo h1 {
+    font-size: 20px;
+    margin: 0;
+    color: #3b7878
+}
+
+/* COLUMNA 3: Botones tipo tabs */
+.col-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #cfcfcf;
+    color: #152340;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.tab-btn:hover {
+    background: #1B2A4A;
+    color: #fff;
+}
+
+.tab-btn.active {
+    background: #04b3bb;
+    color: #ffffff;
+}
+
+.icon-tab {
+    width: 20px;
+    height: 20px;
+}
+
+/* ================================
+   CONTENIDO DE LOS TABS
+================================= */
+.tab-content {
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ================================
+   BUSCADOR FIJO EN EL TAB
+================================= */
+.buscador-tab {
+    position: sticky;
+    top: 0;
+    padding: 10px 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #999797;
+}
+
+.buscador-tab input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid #04b3bb;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.buscador-tab input:focus {
+    box-shadow: 0 0 2px #04b3bb;
+    border-color: #04b3bb;
+}
+
+/* ================================
+   CONTENEDOR SCROLLABLE DE CARDS
+================================= */
+.cards-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-height: calc(100vh - 250px); /* Ajusta según header + buscador + margen */
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* ================================
+   CARD DE LIBROS / DASHBOARDS
+================================= */
+.card-item {
+    background: #fff;
+    border: 2px solid #04b3bb;
+    border-radius: 10px;
+    flex: 0 0 calc(33.33% - 10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.card-info h3 {
+    margin: 0;
+    font-size: 14px;
+    color: #04b3bb;
+    text-align: center;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+}
+
+/* ================================
+   RESPONSIVO
+================================= */
+@media (max-width: 1126px) {
+    .card-item {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 1126px) {
+    .card-item {
+        flex: 0 0 94%;
+    }
+
+    .buscador-tab input {
+        width: 95%;
+    }
+}
+
+
+/* RESPONSIVO */
+@media (max-width: 1126px) {
+    .card-app {
+        flex-direction: column;
+        align-items: flex-start;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .col-tabs {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .col-titulo h1 {
+        font-size: 18px;
+    }
+
+    .col-logo {
+        width: 150px;
+        height: auto;
+    }
+
+    .logo-card {
+        max-height: 50px;
+    }
+
+    .col-titulo {
+        display: none;
+    }
+
+    .logo-card-piif {
+        display: block;
+    }
+
+    .logo-card{
+        display: none;
+    }
+}
+
+
+/* ================================
+   BARRA FIJA BUSCADOR + BOTÓN
+================================ */
+.barra-biblioteca {
+    position: sticky;
+    top: 0;
+    background: #f5f6fa;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+
+.barra-biblioteca input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #04b3bb;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.btn-agregar {
+    background: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-agregar:hover {
+    background: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+}
+
+/* ================================
+   CONTENEDOR SCROLL DE PROYECTOS
+================================ */
+#contenedor-proyectos {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+    padding-right: 10px;
+    position: relative;
+}
+
+
+
+/* ================================
+   CARD DE PROYECTO
+================================ */
+.card-proyecto {
+    position: relative;
+    background: #fff;
+    /*border: 2px solid #04b3bb;*/
+    border-radius: 12px;
+    padding: 15px;
+    flex: 0 0 calc(33.33% - 10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.card-proyecto h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: green;
+}
+
+.card-proyecto p {
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+}
+
+/* ================================
+   MENÚ HAMBURGUESA
+================================ */
+.menu-proyecto {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.opciones-proyecto {
+    display: none;
+    position: fixed;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    overflow: hidden;
+    z-index: 9999;
+    min-width: 140px;
+}
+
+
+.opciones-proyecto div {
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+    z-index: 99999;
+}
+
+.opciones-proyecto div:hover {
+    background: #04b3bb;
+    color: white;
+}
+
+.opciones-proyecto .eliminar {
+    color: red;
+}
+
+/* ================================
+   RESPONSIVO
+================================ */
+@media (max-width: 1100px) {
+    .card-proyecto {
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .barra-biblioteca {
+        flex-direction: column;
+    }
+
+    .card-proyecto {
+        flex: 0 0 90%;
+    }
+}
+
+
+
+.card-app {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f6fb 100%);
+    border-left: 6px solid #04b3bb;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.tab-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: #ffffff;
+    transition: width 0.3s;
+}
+
+.tab-btn.active::after {
+    width: 100%;
+}
+
+
+.card-proyecto {
+    position: relative;
+    background: linear-gradient(180deg, #ffffff, #f8fafd);
+    border-radius: 16px;
+    padding: 18px;
+    flex: 0 0 calc(33.33% - 12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeUp 0.4s ease both;
+}
+
+.card-proyecto:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.card-proyecto h3 {
+    font-size: 17px;
+    color: #1b4d4d;
+}
+
+.card-proyecto p {
+    font-size: 13px;
+    color: #5f6b7a;
+    margin-bottom: 25px;
+}
+
+
+.menu-proyecto {
+    background: #eef3f3;
+    border-radius: 50%;
+    padding: 6px 10px;
+    transition: background 0.2s;
+}
+
+.menu-proyecto:hover {
+    background: #04b3bb;
+    color: #fff;
+}
+
+
+.barra-biblioteca {
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+}
+
+.barra-biblioteca input {
+    background: #ffffff;
+}
+
+
+@media (max-width: 900px) {
+    .card-proyecto {
+        flex: 0 0 calc(50% - 12px);
+    }
+}
+
+@media (max-width: 500px) {
+    .card-proyecto {
+        flex: 0 0 100%;
+    }
+}
+
+
+@keyframes fadeTab {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.opciones-proyecto {
+    display: none;
+    position: fixed;   /* 👈 vuelve a fixed */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    overflow: hidden;
+    z-index: 10000;
+    min-width: 160px;
+}
+

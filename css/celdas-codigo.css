@@ -1,0 +1,176 @@
+/* === CELDA DE CÓDIGO === */
+.celda-codigo {
+    background: #F5F6FA;
+    color: #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    border: 1px solid #e5e7eb;
+}
+
+.celda-codigo.celdaActiva {
+    border-color: #04b3bb;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.header-codigo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.header-codigo span {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.btn-orion {
+    background: #007279;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.btn-orion img {
+    width: 22px;
+    height: 22px;
+}
+
+
+
+/* Resultado */
+.resultado-codigo {
+    margin-top: 10px;
+    background: #e5e7eb;
+    border-left: 4px solid #22c55e;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #000000;
+    display: none;
+
+
+    white-space: pre-wrap;
+    font-family: monospace;
+    line-height: 1.5;
+
+
+
+}
+
+/* === CHAT ORION === */
+.orion-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 320px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    padding: 12px;
+    z-index: 9999;
+    text-align: center;
+    color: green;
+}
+
+.orion-chat textarea {
+    width: 100%;
+    height: 80px;
+    resize: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-color: #e5e7eb;
+}
+
+.orion-chat textarea:focus,
+.orion-chat textarea:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(4, 179, 187, 0.35) !important;
+    border-color: #04b3bb;
+}
+
+
+.orion-chat button {
+    margin-top: 8px;
+    width: 100%;
+    background: #04b3bb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.editor-codigo {
+    width: 98.5%;
+    min-height: 120px;
+    resize: none;          
+    overflow: hidden;      
+    background: #5F6C85;
+    color: #e5e7eb;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.orion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.orion-cerrar {
+    background: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: #64748b;
+    padding: 4px;
+    width: 30px !important;
+}
+
+.orion-cerrar:hover {
+    color: #ef4444;
+}
+
+
+.btn-importar-codigo {
+  background: #007279;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
+
+
+.btn-importar-codigo img {
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.resultado-codigo.resaltado {
+    animation: glow 1.2s ease;
+}
+
+@keyframes glow {
+    0%   { background: #e8f7ff; }
+    100% { background: transparent; }
+}
+
+
+
+
+

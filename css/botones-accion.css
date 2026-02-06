@@ -1,0 +1,31 @@
+.notebook-toolbar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.tool-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 12px;
+    border: 0px;
+    cursor: pointer;
+    background-color: rgba(4, 179, 187, 0.15) !important;
+}
+
+.tool-btn img {
+    width: 26px;
+    height: 26px;
+    filter: invert(44%) sepia(86%) saturate(380%) hue-rotate(135deg);
+}
+
+.textBotonAccion{
+    color: green;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+

@@ -1,0 +1,59 @@
+body{
+    background-color: #F5F6FA;
+}
+
+/* ================================
+   CONTENEDOR PRINCIPAL DEL PORTAL
+================================= */
+.contenedor-app {
+    position: relative;         /* para posicionamiento interno si se requiere */
+    margin-top: 100px;          /* mismo alto del header desktop */
+    width: 100%;
+    min-height: calc(100vh - 100px);  /* altura completa de la pantalla menos header */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    overflow-y: auto;           /* permite scroll vertical si el contenido es mayor que la pantalla */
+    box-sizing: border-box;
+
+    /* Animación opcional de entrada */
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* ================================
+   ANIMACIÓN FADE IN
+================================= */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================================
+   RESPONSIVO – MÓVIL
+================================= */
+@media (max-width: 768px) {
+    .contenedor-app {
+        margin-top: 60px;                  /* altura del header móvil */
+        padding: 15px;                      /* menos padding en móviles */
+        gap: 15px;
+        min-height: calc(100vh - 60px);     /* altura completa menos header móvil */
+    }
+}
+
+
+
+body {
+    background: linear-gradient(135deg, #f5f6fa 0%, #e9eef5 100%);
+}
+
+/* Suavizar scroll */
+.contenedor-app {
+    scroll-behavior: smooth;
+}
