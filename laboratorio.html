@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- header -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/contenido.css">
+    <link rel="stylesheet" href="css/tooltip.css">
+
+
+    <link rel="stylesheet" href="css/botones-accion.css">
+    <link rel="stylesheet" href="css/laboratorio.css">
+    <link rel="stylesheet" href="css/celdas-codigo.css">
+
+
+    <title>
+      LabPIIF
+    </title>    
+  </head>
+  <body style="margin: 0px !important;">
+
+
+    <!--Header de la aplicación -->
+    <header>
+      <div class="grupo-izquierdo">
+        <img src="imagenes/logo1.png" alt="Banco de Mexico" class="logo" />
+      </div>
+      <div class="usuario">
+        <!-- Bonones de accion -->
+        <div class="botones-header desktop-only botones">
+          <a id="home" href="index.html" data-tooltip="Regresar a inicio" data-tooltip-position="bottom">
+            <img src="imagenes/home.svg" data-imgtype="d" width="24" height="24">
+          </a>
+          <a href="#" data-tooltip="Cerrar sesión" data-tooltip-position="bottom">
+            <img src="imagenes/salir.svg" alt="Cerrar sesión" data-imgtype="d" width="24" height="24">
+          </a>
+        </div>
+        <!-- Informacion de usuario -->
+
+        <div class="usuario-main">
+          <div class="info">
+            <div class="nombre-usuario">Luis Antonio Hernández De La Luz</div>
+            <div class="nombre-usuario">B16847 - 002001</div>
+          </div>
+          <img src="imagenes/b16847.png" alt="Usuario" class="foto-usuario">
+        </div>
+      </div>
+    </header>
+
+
+    <!-- Contenido de la aplicacion -->
+    <div class="contenedor-app" style="padding:0px;">
+      <div class="layout-dashboard">
+        
+        <!-- Menu -->
+        <aside class="columna-menu" id="columnaMenu">
+          <div class="panel-fuentes">
+              <!-- Botones de fuentes -->
+              <div class="tabs">
+                <button class="tab active" data-tab="institucionales">Fuentes institucionales</button>
+                <button class="tab" data-tab="locales">Fuentes locales</button>
+              </div>
+              <!-- Contenedor de contenido de tabs -->
+              <div class="tab-contenido">
+                <!-- Fuentes institucionales -->
+                <div class="tab-panel active" id="institucionales">
+                  <button class="btn-agregar-fuente" id="agregarFuenteInstitucional">Agregar fuente institucional</button>
+                  <input type="text" class="buscador" placeholder="Buscar fuentes institucionales...">
+                  <!-- Contenedor scrollable -->
+                  <div class="lista-fuentes-contenedor">
+                    <div class="lista-fuentes fuentesInstitucionales">
+                      <div class="fuente-item" identificador='1f8a667a-1e7b-430c-ab61-041ae06ac315'>
+                        <img src="imagenes/info.png" class="fuente-icono" alt="icono">
+                        <span class="fuente-nombre">Operaciones de reporto: volumen, contrapartes, plazos, tasas, etc. <p class="identificadorFuente">Identificador: b995420c-a8b0-49ce-8f68-c62de7b95095</p>
+                        </span>
+                        <div class="fuente-menu">
+                          <button class="menu-btn">☰</button>
+                          <div class="menu-opciones">
+                            <button class="opcion usar">Usar</button>
+                            <button class="opcion eliminar">Remover</button>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Resto de elementos .fuente-item iguales -->
+                    </div>
+                  </div>
+                </div>
+                <!-- Fuentes locales -->
+                <div class="tab-panel" id="locales">
+                  <button class="btn-agregar-fuente" id="agregarFuenteLocal">Subir archivo</button>
+                  <input type="text" class="buscador" placeholder="Buscar archivos locales...">
+                  <div class="lista-fuentes-contenedor">
+                    <div class="lista-fuentes fuentesLocales">
+                      <div class="fuente-item" archivo='contrapartes' extension='xlsx'>
+                        <img src="imagenes/document.png" class="fuente-icono" alt="icono">
+                        <span class="fuente-nombre">Información de contrapartes <p class="identificadorFuente">Archivo: contrapartes.xlsx</p>
+                        </span>
+                        <div class="fuente-menu">
+                          <button class="menu-btn">☰</button>
+                          <div class="menu-opciones">
+                            <button class="opcion usarArchivo">Usar</button>
+                            <button class="opcion eliminar">Remover</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fuente-item" archivo='rentaVar' extension='csv'>
+                        <img src="imagenes/document.png" class="fuente-icono" alt="icono">
+                        <span class="fuente-nombre">Mercado de renta variable <p class="identificadorFuente">Archivo: rentaVar.csv</p>
+                        </span>
+                        </span>
+                        <div class="fuente-menu">
+                          <button class="menu-btn">☰</button>
+                          <div class="menu-opciones">
+                            <button class="opcion usarArchivo">Usar</button>
+                            <button class="opcion eliminar">Remover</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </aside>
+
+
+
+        <!-- Contenido del tablero -->
+        <main class="columna-contenido" id="columnaContenido">
+          <div class="contenido-header-fijo">      
+
+
+            <!-- Botones de acción para el notebook -->
+            <div class="notebook-toolbar"> 
+              <button id="btnMostrarMenuContenido" class="tool-btn" style="display: none;">
+                <img src="imagenes/abrirPanelBlanco.svg">
+                <span class="textBotonAccion">Mostrar fuentes</span>
+              </button>
+              <button class="tool-btn" id="ejecutarCelda">
+                <img src="imagenes/play.svg">
+                <span class="textBotonAccion">Ejecutar celda</span>
+              </button>
+              <button class="tool-btn" id="btnAgregarTexto">
+                <img src="imagenes/insertText.svg">
+                <span class="textBotonAccion">Insertar texto</span>
+              </button>
+              <button class="tool-btn" id="btnAgregarCodigo">
+                <img src="imagenes/code.svg">
+                <span class="textBotonAccion">Insertar código</span>
+              </button>
+              <button class="tool-btn" id="btnBorrarCelda">
+                <img src="imagenes/eliminar.svg">
+                <span class="textBotonAccion">Borrar celda</span>
+              </button>
+              <button class="tool-btn">
+                <img src="imagenes/save.svg">
+                <span class="textBotonAccion">Guardar proyecto</span>
+              </button>
+            </div>
+
+
+          </div>
+          
+          <!-- Contenido del tablero -->
+          <div class="contenido-principal">      
+
+            
+     
+
+          </div>
+        </main>
+
+
+
+
+
+      </div>
+      <!-- Fin de contenido -->
+    </div>
+
+    
+
+    <!-- MODAL -->
+        <div id="modalFuentes" class="modal-overlay">
+          <div class="modal-contenido">
+            <h2>Seleccionar fuente institucional</h2>
+            <div class="tabla-responsive">
+              <table class="tabla-fuentes" id="tablaFuentes">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Rellenado dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+            <button class="modal-cerrar" id="cerrarModalFuentes">Cerrar</button>
+          </div>
+        </div>
+
+    <!-- MODAL PARA SUBIR ARCHIVO -->
+        <div id="modalArchivo" class="modal-archivo oculto">
+          <div class="modal-contenido">
+            <h2>Agregar archivo local</h2>
+            <label>Nombre del archivo:</label>
+            <input type="text" id="nombreArchivoManual" placeholder="Ej: Información de contrapartes">
+            <label>Seleccionar archivo:</label>
+            <input type="file" id="archivoLocal">
+            <div class="modal-acciones">
+              <button id="btnCancelarArchivo" class="btn-cancelar">Cancelar</button>
+              <button id="btnAgregarArchivo" class="btn-confirmar">Agregar archivo</button>
+            </div>
+          </div>
+        </div>    
+
+
+    
+    <!-- Librerias externas -->
+    <script src="js/librerias/jquery-3.7.1.min.js"></script>
+    <script type='text/javascript' src='js/librerias/jquery-ui.min.js' charset="UTF-8"></script>
+    <link rel="stylesheet" href="js/librerias/jquery-ui.css" />
+    <!-- Script locales -->
+    <script src="js/layout.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/laboratorio.js"></script>
+    <script src="js/celdas-codigo.js"></script>
+    <script src="js/fuentes.js"></script>
+
+
+
+
+
+
+  </body>
+</html>

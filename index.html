@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LabPIIF</title>
+    <!-- CSS Header -->
+    <link rel="stylesheet" href="css/header.css">
+    <!-- Contenedor -->
+    <link rel="stylesheet" href="css/contenedor-app.css">
+    <!-- Inicio -->
+    <link rel="stylesheet" href="css/inicio.css">
+  </head>
+  <body>
+
+    <!--Header de la aplicación -->
+    <header>
+      <div class="grupo-izquierdo">
+        <!--<img src="img/logoBM-Mblanco.png" alt="Banco de México" class="bml" />-->
+        <!--<img src="img/100anios.png" alt="Banco de México" class="bml2" />-->
+        <img src="imagenes/logo1.png" alt="Banco de Mexico" class="logo" />
+      </div>
+      <div class="usuario">
+        <!-- Bonones de accion -->
+        <div class="botones-header desktop-only botones">
+          <a href="#" title="Cerrar sesión"> 
+            <img src="imagenes/salir.svg" alt="Cerrar sesión" data-imgtype="d" width="24" height="24"> 
+          </a>
+        </div>
+        <!-- Informacion de usuario -->
+        <div class="usuario-main">
+          <div class="info">
+            <div class="nombre-usuario">Luis Antonio Hernández De La Luz</div>
+            <div class="nombre-usuario">B16847</div>
+          </div>
+          <img src="imagenes/b16847.png" alt="Usuario" class="foto-usuario">
+        </div>
+      </div>
+    </header>
+
+
+    <div class="contenedor-app">
+    <!-- Inicio del contenido -->
+
+
+      <div class="card-app">
+        <!-- Logo de la aplicación -->
+        <div class="col-logo">
+            <img src="imagenes/Labpiif.png" alt="Logo Portal" class="logo-card">
+        </div>
+
+        <!-- Nombre de la aplicación -->
+        <div class="col-titulo">
+            <h1>LabPIIF</h1>
+        </div>
+
+        <!-- Opciones de la aplicación -->
+        <div class="col-tabs">
+            <button class="tab-btn active" data-tab="biblioteca">
+                <img src="imagenes/persona.svg" alt="Personales" class="icon-tab">
+                Mis proyectos
+            </button>
+            <button class="tab-btn" data-tab="dashboards">
+                <img src="imagenes/share.svg" alt="Compartidos" class="icon-tab">
+                Proyectos compartidos
+            </button>
+        </div>
+      </div>
+
+
+      <!-- TAB: PROYECTOS PERSONALES -->
+      <div class="tab-content" id="biblioteca">
+
+        <!-- Barra fija: Buscador + Botón -->
+        <div class="barra-biblioteca">
+          <input type="text" id="buscar-biblioteca" placeholder="Buscar proyecto...">
+          <button class="btn-agregar">+ Nuevo proyecto</button>
+        </div>
+
+        <!-- Contenedor de proyectos -->
+        <div class="cards-container" id="contenedor-proyectos">
+
+          <!-- CARD -->
+          <div class="card-proyecto">
+            <h3>Proyecto Finanzas</h3>
+            <p>Análisis financiero trimestral</p>
+
+            <div class="menu-proyecto">
+              ☰
+              <div class="opciones-proyecto">
+                <div>Compartir</div>
+                <div>Editar</div>
+                <div class="eliminar">Eliminar</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Puedes duplicar esta card -->
+          <div class="card-proyecto">
+            <h3>Proyecto PIIF</h3>
+            <p>Análisis de estadisticas del PIIF</p>
+
+            <div class="menu-proyecto">
+              ☰
+              <div class="opciones-proyecto">
+                <div>Compartir</div>
+                <div>Editar</div>
+                <div class="eliminar">Eliminar</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-proyecto">
+            <h3>Proyecto Python</h3>
+            <p>Análisis de estadisticas del APIIF</p>
+
+            <div class="menu-proyecto">
+              ☰
+              <div class="opciones-proyecto">
+                <div>Compartir</div>
+                <div>Editar</div>
+                <div class="eliminar">Eliminar</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+
+      <div class="tab-content" id="dashboards" style="display:none;">
+
+        <!-- Barra fija SOLO buscador -->
+        <div class="barra-biblioteca">
+          <input type="text" id="buscar-dashboards" placeholder="Buscar proyecto compartido...">
+        </div>
+
+        <!-- Contenedor de proyectos compartidos -->
+        <div class="cards-container" id="contenedor-dashboards">
+
+          <!-- CARD -->
+          <div class="card-proyecto">
+            <h3>Dashboard Financiero</h3>
+            <p>Indicadores compartidos del área de finanzas</p>
+
+            <div class="menu-proyecto">
+              ☰
+              <div class="opciones-proyecto">
+                <div>Compartir</div>
+                <div>Editar</div>
+                <div class="eliminar">Eliminar</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      
+      
+
+    <!-- Fin del contenido -->
+    </div>
+
+
+  <!-- Librerias externas -->
+  <script src="librerias/jquery-3.7.1.min.js"></script>
+
+  <!-- Script locales -->
+  <script src="js/header.js"></script>
+  <script src="js/inicio.js"></script>
+
+  </body>
+</html>
