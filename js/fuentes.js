@@ -1,16 +1,24 @@
 /* ========================
    TABS DE FUENTES
 ======================== */
-document.querySelectorAll(".tab").forEach(tab => {
-    tab.addEventListener("click", () => {
-        // quitar active de tabs
-        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
+const contenedorTabs = document.querySelector('#tab-fuentes');
 
-        // mostrar panel correspondiente
+contenedorTabs.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+
+        // quitar active solo dentro de #tab-fuentes
+        contenedorTabs.querySelectorAll('.tab')
+            .forEach(t => t.classList.remove('active'));
+
+        tab.classList.add('active');
+
+        // mostrar panel correspondiente SOLO dentro de #tab-fuentes
         const id = tab.dataset.tab;
-        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-        document.getElementById(id).classList.add("active");
+
+        contenedorTabs.querySelectorAll('.tab-panel')
+            .forEach(p => p.classList.remove('active'));
+
+        contenedorTabs.querySelector('#' + id).classList.add('active');
     });
 });
 
@@ -63,6 +71,10 @@ except Exception as e:
         // Insertar la celda de código (usa tu función actual)
         agregarCeldaCodigoDinamica(codigo);
     }
+
+    if (e.target.classList.contains("explorar")) {
+        mostrarToast("Se va a explorar la fuente","info");
+    }
 });
 
 
@@ -90,6 +102,9 @@ print(HERE)`;
 
          //Agregar la celda usando tu misma función
         agregarCeldaCodigoDinamica(codigo);
+    }
+    if (event.target.classList.contains("explorarArchivo")) {
+        mostrarToast("Se va a explorar el archivo","info");
     }
 });
 
@@ -152,7 +167,6 @@ document.addEventListener("click", function(event) {
         const nombre = event.target.dataset.nombre;
         const descripcion = event.target.dataset.descripcion;
 
-        // 🔥 Ajustado para usar la clase fuentesInstitucionales
         const contenedor = document.querySelector(".fuentesInstitucionales");
 
         const div = document.createElement("div");
@@ -169,6 +183,7 @@ document.addEventListener("click", function(event) {
         <button class="menu-btn">☰</button>
         <div class="menu-opciones">
           <button class="opcion usar">Usar</button>
+          <button class="opcion usar">Explorar</button>
           <button class="opcion eliminar">Remover</button>
         </div>
       </div>
@@ -231,6 +246,7 @@ document.getElementById("btnAgregarArchivo").addEventListener("click", () => {
           <button class="menu-btn">☰</button>
           <div class="menu-opciones">
               <button class="opcion usarArchivo">Usar</button>
+              <button class="opcion explorarArchivo">Explorar</button>
               <button class="opcion eliminar">Remover</button>
           </div>
       </div>

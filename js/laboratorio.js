@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $('#btnGuardarProyecto').on('click', function () {
-        mostrarToast("Se guardo el proyecto correctamente...","success");
+    $('#btnActualizarCuaderno').on('click', function () {
+        mostrarToast("Se guardo el contenido del cuaderno correctamente...","success");
     });
 });
 

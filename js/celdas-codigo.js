@@ -16,18 +16,29 @@ function agregarCeldaCodigo() {
             <button type="button" class="btn-importar-codigo" title="Cargar archivo Python" data-importar-codigo>
               <img src="imagenes/uploadFile.svg" alt="Importar código">
             </button>
-
             <input type="file" class="input-importar-codigo" accept=".py" hidden>
+            
+
+            <button class="btn-play-codigo ejecutarCelda">
+                <img src="imagenes/play.svg" alt="PLAY">
+            </button>
+
+            <button class="btn-play-codigo btn-comentarios">
+                <img src="imagenes/comentario.svg" alt="PLAY">
+            </button>
+
             <button class="btn-orion">
                 <img src="imagenes/bot.svg" alt="ORION">
             </button>
+
         </div>
         <textarea class="editor-codigo">print("Hola mundo")</textarea>
+        <div class="explicacion-codigo"></div>
         <div class="resultado-codigo"></div>
     `;
 
     celda.addEventListener('click', e => {
-        e.stopPropagation();
+        //e.stopPropagation();
         activarCelda(celda);
     });
 
@@ -39,6 +50,10 @@ function agregarCeldaCodigo() {
     const activa = document.querySelector('.celdaActiva');
     if (activa) activa.after(celda);
     else document.querySelector('.contenido-principal').appendChild(celda);
+
+    const idCelda = generarIdCelda();
+    celda.dataset.idCelda = idCelda;
+
 
     activarCelda(celda);
 
@@ -55,7 +70,7 @@ function agregarCeldaCodigo() {
         e.stopPropagation(); 
         inputFile.value = '';
         inputFile.click();
-    });
+    });   
 
     /* Ajuste inicial */
     setTimeout(() => autoResizeTextarea(editor), 0);
@@ -82,7 +97,7 @@ function abrirOrion(celda) {
         </div>
 
         <textarea placeholder="Describe el código Python que quiere generar..."></textarea>
-        <button type="button" class="btn-generar">Generar código</button>
+        <button type="button" class="btn-generar">Enviar</button>
     `;
 
     // Cerrar (NO genera código)
@@ -109,7 +124,18 @@ function generarCodigoIA(prompt) {
     if (!celdaCodigoOrion) return;
 
     const editor = celdaCodigoOrion.querySelector('.editor-codigo');
+    const codigo = editor.value;
+    const promptNormalizado = prompt.toLowerCase();
 
+    if (promptNormalizado.includes('explica') || promptNormalizado.includes('explicame')) {
+        const explicacion = analizarCodigo(codigo);
+        mostrarExplicacionCodigo(explicacion);
+        const explicacionCelda = celdaCodigoOrion.querySelector('.explicacion-codigo');
+        scrollAResultado(explicacionCelda);
+        return;
+    }
+
+    // Comportamiento normal
     editor.value =
 `# Código generado por ORION
 total = 0
@@ -118,11 +144,17 @@ for i in range(1, 6):
 
 print("La suma es:", total)
 `;
+
+    autoResizeTextarea(editor);
 }
 
+
+
 /* === EJECUTAR CELDA === */
-document.getElementById('ejecutarCelda').addEventListener('click', () => {
-    const celda = document.querySelector('.celdaActiva');
+//document.getElementById('ejecutarCelda').addEventListener('click', () => {
+$(document).on('click', '.ejecutarCelda', function () {
+    //const celda = document.querySelector('.celdaActiva');
+     const celda = this.closest('.celda-codigo');
     const salida = celda.querySelector('.resultado-codigo');
 
     if (!celda || !celda.classList.contains('celda-codigo')) {
@@ -130,11 +162,12 @@ document.getElementById('ejecutarCelda').addEventListener('click', () => {
         return;
     }
 
-    const editor = celda.querySelector('.editor-codigo');
-    const resultado = celda.querySelector('.resultado-codigo');
+    //const editor = celda.querySelector('.editor-codigo');
+    //const resultado = celda.querySelector('.resultado-codigo');
 
-    resultado.style.display = 'block';
-    resultado.innerHTML = simularEjecucion(editor.value);
+    //resultado.style.display = 'block';
+    //resultado.innerHTML = simularEjecucion(editor.value);
+    ejecutarCelda(celda);
     scrollAResultado(salida);
 });
 
@@ -401,4 +434,101 @@ Name: Frecuencia Teórica, dtype: float64
 
         `.trim();
     }        
+}
+
+
+
+$('#ejecutarTodoCeldas').on('click', function () {
+
+    const celdas = document.querySelectorAll('.celda-codigo');
+
+    if (celdas.length === 0) {
+        mostrarToast("No hay celdas de código para ejecutar", "warning");
+        return;
+    }
+
+    celdas.forEach((celda, index) => {
+        ejecutarCelda(celda);
+
+        // Opcional: marcar visualmente la celda ejecutada
+        $('.celda-codigo').removeClass('celdaActiva');
+        celda.classList.add('celdaActiva');
+    });
+
+    // Scroll al último resultado
+    const ultimaCelda = celdas[celdas.length - 1];
+    scrollAResultado(ultimaCelda.querySelector('.resultado-codigo'));
+});
+
+
+function ejecutarCelda(celda) {
+    if (!celda || !celda.classList.contains('celda-codigo')) return;
+
+    const editor = celda.querySelector('.editor-codigo');
+    const resultado = celda.querySelector('.resultado-codigo');
+
+    resultado.style.display = 'block';
+    resultado.innerHTML = simularEjecucion(editor.value);
+}
+
+
+function mostrarExplicacionCodigo(texto) {
+    const resultado = celdaCodigoOrion.querySelector('.explicacion-codigo');
+    resultado.style.display = 'block';
+    resultado.innerHTML = `<pre>${texto}</pre>`;
+}
+
+
+function analizarCodigo(codigo) {
+    const codigoLimpio = codigo.trim();
+
+    // 🔹 Python - print
+    if (codigoLimpio.startsWith('# EJEMPLO LAB1')) {
+        return `
+Claro, este código Python realiza un proceso completo de análisis de datos y modelado para predecir clientes fieles utilizando un clasificador Random Forest. Aquí te detallo cada uno de sus pasos:
+Paso 1: Generación de Datos Ficticios Se crea un conjunto de datos simulado de 200 clientes con variables como edad, ingresos, compras mensuales, género y una etiqueta binaria para identificar si son clientes fieles (1) o no (0).
+Paso 2: Análisis Exploratorio de Datos (EDA) Esta sección se enfoca en entender las características del conjunto de datos. Imprime las primeras filas del DataFrame, un resumen estadístico de las columnas numéricas y el conteo de clientes fieles y no fieles. También genera gráficos 'pairplot' para visualizar las distribuciones y relaciones entre las variables, diferenciando por la etiqueta 'Cliente_Fiel'.
+Paso 3: Identificación de Problemas de Calidad de Datos Aquí se buscan problemas comunes en los datos:
+•   Outliers en 'Ingresos': Se define una función para detectar valores atípicos utilizando el método del rango intercuartílico (IQR).
+•   Valores Nulos y Duplicados: Se verifica la presencia de datos faltantes y registros duplicados en el DataFrame.
+Paso 4: Limpieza y Transformación de Datos Este paso prepara los datos para el modelado:
+•   Codificación de Género: La variable categórica 'Genero' ('Masculino', 'Femenino') se convierte a valores numéricos (1, 0) usando LabelEncoder.
+•   Eliminación de Outliers: Los registros identificados como outliers en la columna 'Ingresos' se eliminan del conjunto de datos.
+•   Escalado de Variables Numéricas: Las columnas 'Edad', 'Ingresos' y 'Compras_Mensuales' se escalan utilizando StandardScaler para que tengan una media de 0 y una desviación estándar de 1. Esto es importante para muchos algoritmos de aprendizaje automático.
+Paso 5: Reducción de Dimensionalidad con PCA Se aplica el Análisis de Componentes Principales (PCA) para reducir la dimensionalidad de las características escaladas a dos componentes principales. Esto facilita la visualización de los datos en un espacio 2D y permite identificar patrones. Luego, estos componentes se visualizan en un gráfico de dispersión coloreado por 'Cliente_Fiel'.
+Paso 6: División de Datos y Balanceo de Clases
+•   División Entrenamiento/Prueba: El conjunto de datos limpio se divide en conjuntos de entrenamiento (70%) y prueba (30%). El conjunto de entrenamiento se usa para que el modelo aprenda, y el de prueba para evaluar su rendimiento en datos no vistos.
+•   Balanceo de Clases con SMOTE: Dado que la clase 'Cliente_Fiel' probablemente esté desbalanceada (más clientes no fieles que fieles), se aplica SMOTE (Synthetic Minority Over-sampling Technique) al conjunto de entrenamiento. SMOTE genera muestras sintéticas de la clase minoritaria para equilibrar las clases, lo que ayuda a prevenir que el modelo tenga un sesgo hacia la clase mayoritaria.
+Paso 7: Entrenamiento y Evaluación del Modelo Random Forest
+•   Entrenamiento del Modelo: Se entrena un clasificador RandomForestClassifier con 100 árboles de decisión utilizando el conjunto de entrenamiento balanceado. Random Forest es un algoritmo de ensemble que construye múltiples árboles de decisión y combina sus predicciones para obtener un resultado más robusto.
+•   Predicción: El modelo entrenado se utiliza para hacer predicciones sobre el conjunto de prueba.
+•   Evaluación: Se evalúa el rendimiento del modelo mostrando:
+o   La Matriz de Confusión: Muestra el número de aciertos y errores para cada clase.
+o   El Reporte de Clasificación: Proporciona métricas como precisión, recall y f1-score para cada clase, así como la exactitud general (accuracy) y el promedio ponderado de las métricas.
+
+        `;
+    }
+
+    // 🔹 Python - for
+    if (codigoLimpio.startsWith('# LAB2')) {
+        return `
+Este código Python simula el lanzamiento de dos dados un número determinado de veces (1000 en este caso). 
+Calcula las frecuencias simuladas de las sumas obtenidas y las compara con las frecuencias teóricas esperadas. 
+Además, calcula varias medidas de tendencia central y dispersión, como la media, mediana, moda, rango, varianza, 
+desviación estándar y coeficiente de variación. Finalmente, visualiza estas comparaciones y medidas estadísticas 
+utilizando gráficos de barras, líneas y un diagrama de caja, incluyendo una curva de distribución normal escalada 
+para referencia.
+
+        `;
+    }
+
+
+    if (!codigoLimpio) {
+        return 'La celda está vacía. Escribe código para poder explicarlo.';
+    }
+
+    // 🔹 Default
+    return `
+No puedo explicar el código en este momento, intenta más tarde...
+    `;
 }
