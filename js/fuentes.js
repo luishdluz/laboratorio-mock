@@ -316,13 +316,21 @@ function agregarCeldaCodigoDinamica(codigoInicial = '') {
         <div class="header-codigo">
             <span>Python</span>
 
-            <button type="button" class="btn-importar-codigo" title="Cargar archivo Python">
-                <img src="imagenes/uploadFile.svg" alt="Importar código">
+            <button type="button" class="btn-importar-codigo" title="Cargar archivo Python" data-importar-codigo>
+              <img src="imagenes/uploadFile.svg" alt="Importar código">
+            </button>
+            <input type="file" class="input-importar-codigo" accept=".py" hidden>
+            
+
+            <button class="btn-play-codigo ejecutarCelda">
+                <img src="imagenes/play.svg" alt="PLAY">
             </button>
 
-            <input type="file" class="input-importar-codigo" accept=".py" hidden>
+            <button class="btn-play-codigo btn-comentarios">
+                <img src="imagenes/comentario.svg" alt="PLAY">
+            </button>
 
-            <button class="btn-orion" title="Generar código con ORION">
+            <button class="btn-orion">
                 <img src="imagenes/bot.svg" alt="ORION">
             </button>
         </div>
@@ -335,7 +343,7 @@ function agregarCeldaCodigoDinamica(codigoInicial = '') {
     `;
 
     celda.addEventListener('click', e => {
-        e.stopPropagation();
+        //e.stopPropagation();
         activarCelda(celda);
     });
 
