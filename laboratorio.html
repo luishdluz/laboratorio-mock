@@ -4,18 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- header -->
+    <!-- Header -->
     <link rel="stylesheet" href="css/header.css">
+    <!-- Layout -->
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/contenido.css">
+    <!-- Notificaciones -->
+    <link rel="stylesheet" href="css/notificaciones.css">
+    <!-- Tooltip -->
     <link rel="stylesheet" href="css/tooltip.css">
+    <!-- Menu del proyecto -->
+    <link rel="stylesheet" href="css/menu-proyecto.css">
+    <!-- Cuadernos -->
+    <link rel="stylesheet" href="css/cuadernos.css">
+    <!-- Modales para los cuadernos -->
+    <link rel="stylesheet" href="css/modales-cuadernos.css">
+    <!-- Proyectos -->
+    <link rel="stylesheet" href="css/proyectos.css">
+
+    <link rel="stylesheet" href="css/panelFuentes.css">
 
 
     <link rel="stylesheet" href="css/botones-accion.css">
     <link rel="stylesheet" href="css/laboratorio.css">
     <link rel="stylesheet" href="css/celdas-codigo.css">
-    <link rel="stylesheet" href="css/notificaciones.css">
 
+    <link rel="stylesheet" href="css/contenido.css">
+
+    <link rel="stylesheet" href="css/comentarios-celda.css">
 
     <title>
       LabPIIF
@@ -54,135 +69,437 @@
 
     <!-- Contenido de la aplicacion -->
     <div class="contenedor-app" style="padding:0px;">
-      <div class="layout-dashboard">
         
-        <!-- Menu -->
-        <aside class="columna-menu" id="columnaMenu">
-          <div class="panel-fuentes">
-              <!-- Botones de fuentes -->
-              <div class="tabs">
-                <button class="tab active" data-tab="institucionales">Fuentes institucionales</button>
-                <button class="tab" data-tab="locales">Fuentes locales</button>
-              </div>
-              <!-- Contenedor de contenido de tabs -->
-              <div class="tab-contenido">
-                <!-- Fuentes institucionales -->
-                <div class="tab-panel active" id="institucionales">
-                  <button class="btn-agregar-fuente" id="agregarFuenteInstitucional">Agregar fuente institucional</button>
-                  <input type="text" class="buscador" placeholder="Buscar fuentes institucionales...">
-                  <!-- Contenedor scrollable -->
-                  <div class="lista-fuentes-contenedor">
-                    <div class="lista-fuentes fuentesInstitucionales">
-                      <div class="fuente-item" identificador='1f8a667a-1e7b-430c-ab61-041ae06ac315'>
-                        <img src="imagenes/info.png" class="fuente-icono" alt="icono">
-                        <span class="fuente-nombre">Operaciones de reporto: volumen, contrapartes, plazos, tasas, etc. <p class="identificadorFuente">Identificador: b995420c-a8b0-49ce-8f68-c62de7b95095</p>
-                        </span>
-                        <div class="fuente-menu">
-                          <button class="menu-btn">☰</button>
-                          <div class="menu-opciones">
-                            <button class="opcion usar">Usar</button>
-                            <button class="opcion eliminar">Remover</button>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- Resto de elementos .fuente-item iguales -->
-                    </div>
-                  </div>
-                </div>
-                <!-- Fuentes locales -->
-                <div class="tab-panel" id="locales">
-                  <button class="btn-agregar-fuente" id="agregarFuenteLocal">Subir archivo</button>
-                  <input type="text" class="buscador" placeholder="Buscar archivos locales...">
-                  <div class="lista-fuentes-contenedor">
-                    <div class="lista-fuentes fuentesLocales">
-                      <div class="fuente-item" archivo='contrapartes' extension='xlsx'>
-                        <img src="imagenes/document.png" class="fuente-icono" alt="icono">
-                        <span class="fuente-nombre">Información de contrapartes <p class="identificadorFuente">Archivo: contrapartes.xlsx</p>
-                        </span>
-                        <div class="fuente-menu">
-                          <button class="menu-btn">☰</button>
-                          <div class="menu-opciones">
-                            <button class="opcion usarArchivo">Usar</button>
-                            <button class="opcion eliminar">Remover</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="fuente-item" archivo='rentaVar' extension='csv'>
-                        <img src="imagenes/document.png" class="fuente-icono" alt="icono">
-                        <span class="fuente-nombre">Mercado de renta variable <p class="identificadorFuente">Archivo: rentaVar.csv</p>
-                        </span>
-                        </span>
-                        <div class="fuente-menu">
-                          <button class="menu-btn">☰</button>
-                          <div class="menu-opciones">
-                            <button class="opcion usarArchivo">Usar</button>
-                            <button class="opcion eliminar">Remover</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </aside>
-
-
-
-        <!-- Contenido del tablero -->
-        <main class="columna-contenido" id="columnaContenido">
-          <div class="contenido-header-fijo">      
-
-
-            <!-- Botones de acción para el notebook -->
-            <div class="notebook-toolbar"> 
-              <button id="btnMostrarMenuContenido" class="tool-btn" style="display: none;">
-                <img src="imagenes/abrirPanelBlanco.svg">
-                <span class="textBotonAccion">Mostrar fuentes</span>
-              </button>
-              <button class="tool-btn" id="ejecutarCelda">
-                <img src="imagenes/play.svg">
-                <span class="textBotonAccion">Ejecutar celda</span>
-              </button>
-              <button class="tool-btn" id="btnAgregarTexto">
-                <img src="imagenes/insertText.svg">
-                <span class="textBotonAccion">Insertar texto</span>
-              </button>
-              <button class="tool-btn" id="btnAgregarCodigo">
-                <img src="imagenes/code.svg">
-                <span class="textBotonAccion">Insertar código</span>
-              </button>
-              <button class="tool-btn" id="btnBorrarCelda">
-                <img src="imagenes/eliminar.svg">
-                <span class="textBotonAccion">Borrar celda</span>
-              </button>
-              <button class="tool-btn" id="btnGuardarProyecto">
-                <img src="imagenes/save.svg">
-                <span class="textBotonAccion">Guardar proyecto</span>
-              </button>
+        <!-- Menu del proyecto -->
+        <div class="menu-superior">
+          <!-- Izquierda -->
+          <div class="menu-izquierda">
+            <img src="imagenes/Labpiif.png" class="menu-logo" alt="App">
+            <div class="menu-proyecto" id="nombreProyecto"> <strong>Indicadores Financieros</strong>
             </div>
 
+            <div class="menu-acciones" id="btnGuardarProyecto"> 💾 Guardar </div>
+            <div class="menu-acciones" id="btnEditarProyecto"> ✏️ Editar </div>
+            <div class="menu-acciones" id="btnCompartirProyecto"> 👥 Compartir </div>
+            <div class="menu-acciones" id="btnEliminarProyecto"> 🗑 Eliminar </div>
+            <div class="menu-acciones" id="btnToggleCuadernos" status="visible">
+               📓 Ocultar opciones
+            </div>
 
           </div>
-          
-          <!-- Contenido del tablero -->
-          <div class="contenido-principal">      
 
-            
-     
+        </div>
+        
+        <!-- Contenido principal debajo del menú -->
+        <div class="contenido-principal-laboratorio">
+            <div class="workspace">
+              
+              <!-- COLUMNA IZQUIERDA -->
+              <aside class="panel-cuadernos">
+                <!-- TABS VERTICALES -->
+                <div class="sidebar-tabs">
+                    <div class="sidebar-tab activa" data-tab="cuadernos" data-tooltip="Cuadernos" data-tooltip-position="right">
+                        📓
+                    </div>
+                    <div class="sidebar-tab" data-tab="fuentes" data-tooltip="Fuentes" data-tooltip-position="right">
+                        📚
+                    </div>
+                    <div class="sidebar-tab" data-tab="configuracion" data-tooltip="Entorno de ejecución" data-tooltip-position="right">
+                        ⚒
+                    </div>
+                </div>
 
-          </div>
-        </main>
+                <!-- CONTENIDO -->
+                <div class="sidebar-contenido">
+
+                    <!-- CUADERNOS -->
+                    <div class="sidebar-panel activo" id="tab-cuadernos">
+                        
+                        <div class="panel-cuadernos-header">
+                          <input type="text" class="buscador-cuadernos" placeholder="Buscar cuaderno…">
+                          <button class="btn-nuevo-cuaderno" data-tooltip="Crear cuaderno" data-tooltip-position="right">+</button>
+                        </div>
+                        <div class="lista-cuadernos">
+                  
+                          <!-- Cuaderno -->
+                          <div class="cuaderno-item" data-id="cuaderno_0">
+                              <span class="cuaderno-nombre">Calculos</span>
+                              <div class="cuaderno-acciones">
+                                  <button class="btn-editar" title="Editar">✏️</button>
+                                  <button class="btn-eliminar" title="Eliminar">🗑️</button>
+                              </div>
+                          </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- FUENTES -->
+                    <div class="sidebar-panel" id="tab-fuentes">
+                        
+                        <!-- Inicio fuentes -->
+                        <div class="panel-fuentes">
+                          <!-- Botones de fuentes -->
+                          <div class="tabs">
+                            <button class="tab active" data-tab="institucionales">Fuentes institucionales</button>
+                            <button class="tab" data-tab="locales">Fuentes locales</button>
+                          </div>
+                          <!-- Contenedor de contenido de tabs -->
+                          <div class="tab-contenido">
+                            <!-- Fuentes institucionales -->
+                            <div class="tab-panel active" id="institucionales">
+                              <button class="btn-agregar-fuente" id="agregarFuenteInstitucional">Agregar fuente institucional</button>
+                              <input type="text" class="buscador" placeholder="Buscar fuentes institucionales...">
+                              <!-- Contenedor scrollable -->
+                              <div class="lista-fuentes-contenedor">
+                                <div class="lista-fuentes fuentesInstitucionales">
+                                  <div class="fuente-item" identificador='1f8a667a-1e7b-430c-ab61-041ae06ac315'>
+                                    <img src="imagenes/info.png" class="fuente-icono" alt="icono">
+                                    <span class="fuente-nombre">Operaciones de reporto: volumen, contrapartes, plazos, tasas, etc. <p class="identificadorFuente">Identificador: b995420c-a8b0-49ce-8f68-c62de7b95095</p>
+                                    </span>
+                                    <div class="fuente-menu">
+                                      <button class="menu-btn">☰</button>
+                                      <div class="menu-opciones">
+                                        <button class="opcion usar">Usar</button>
+                                        <button class="opcion explorar">Explorar</button>
+                                        <button class="opcion eliminar">Remover</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- Resto de elementos .fuente-item iguales -->
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Fuentes locales -->
+                            <div class="tab-panel" id="locales">
+                              <button class="btn-agregar-fuente" id="agregarFuenteLocal">Subir archivo</button>
+                              <input type="text" class="buscador" placeholder="Buscar archivos locales...">
+                              <div class="lista-fuentes-contenedor">
+                                <div class="lista-fuentes fuentesLocales">
+                                  <div class="fuente-item" archivo='contrapartes' extension='xlsx'>
+                                    <img src="imagenes/document.png" class="fuente-icono" alt="icono">
+                                    <span class="fuente-nombre">Información de contrapartes <p class="identificadorFuente">Archivo: contrapartes.xlsx</p>
+                                    </span>
+                                    <div class="fuente-menu">
+                                      <button class="menu-btn">☰</button>
+                                      <div class="menu-opciones">
+                                        <button class="opcion usarArchivo">Usar</button>
+                                        <button class="opcion explorarArchivo">Explorar</button>
+                                        <button class="opcion eliminar">Remover</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="fuente-item" archivo='rentaVar' extension='csv'>
+                                    <img src="imagenes/document.png" class="fuente-icono" alt="icono">
+                                    <span class="fuente-nombre">Mercado de renta variable <p class="identificadorFuente">Archivo: rentaVar.csv</p>
+                                    </span>
+                                    </span>
+                                    <div class="fuente-menu">
+                                      <button class="menu-btn">☰</button>
+                                      <div class="menu-opciones">
+                                        <button class="opcion usarArchivo">Usar</button>
+                                        <button class="opcion explorarArchivo">Explorar</button>
+                                        <button class="opcion eliminar">Remover</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
 
 
+                        <!-- Fin de fuentes -->
 
 
-      </div>
-      <!-- Fin de contenido -->
+                    </div>
+
+                    <div class="sidebar-panel" id="tab-configuracion" style="padding: 15px;">
+                       <h4 class="sidebar-titulo">Entorno de ejecución</h4>
+                       <div class="entorno-ejecucion">
+                         <label class="entorno-label">Lenguaje</label>
+                         <div class="lenguajes-opciones">
+                           <label class="lenguaje-card activa">
+                             <input type="radio" name="lenguaje" value="python" checked>
+                             <div class="lenguaje-info">
+                               <span>Python</span>
+                             </div>
+                           </label>
+                           <label class="lenguaje-card">
+                             <input type="radio" name="lenguaje" value="r">
+                             <div class="lenguaje-info">
+                               <span>R</span>
+                             </div>
+                           </label>
+                           <label class="lenguaje-card">
+                             <input type="radio" name="lenguaje" value="java">
+                             <div class="lenguaje-info">
+                               <span>Java</span>
+                             </div>
+                           </label>
+                         </div>
+                         <div class="entorno-descripcion" id="descripcionLenguaje"> Python es el lenguaje por defecto para análisis de datos, machine learning y visualización. </div>
+                       </div>
+                    </div>
+
+                </div>
+
+                
+
+              </aside>
+              
+              <!-- COLUMNA DERECHA -->
+              <main class="panel-trabajo">
+                  <div class="tabs-bar">
+                      <div class="tab activa" data-id="cuaderno_0">
+                          Calculos
+                          <!--<span class="cerrar">✕</span>-->
+                      </div>
+                  </div>
+
+                  <div class="tabs-content">
+                      <div class="tab-panel activo" id="panel-cuaderno_0" style="display: block !important">
+                          <!-- Cuaderno -->
+                            <div class="contenido-header-fijo">    
+                              <!-- Botones de acción para el notebook -->
+                              <div class="notebook-toolbar"> 
+                                <button id="btnMostrarMenuContenido" class="tool-btn" style="display: none;">
+                                  <img src="imagenes/abrirPanelBlanco.svg">
+                                  <span class="textBotonAccion">Mostrar fuentes</span>
+                                </button>
+                                <button class="tool-btn" id="ejecutarTodoCeldas">
+                                  <img src="imagenes/play.svg">
+                                  <span class="textBotonAccion">Ejecutar todo</span>
+                                </button>
+                                <button class="tool-btn" id="btnAgregarTexto">
+                                  <img src="imagenes/insertText.svg">
+                                  <span class="textBotonAccion">Insertar texto</span>
+                                </button>
+                                <button class="tool-btn" id="btnAgregarCodigo">
+                                  <img src="imagenes/code.svg">
+                                  <span class="textBotonAccion">Insertar código</span>
+                                </button>
+                                <button class="tool-btn" id="btnBorrarCelda">
+                                  <img src="imagenes/eliminar.svg">
+                                  <span class="textBotonAccion">Borrar celda</span>
+                                </button>
+                                <button class="tool-btn" id="btnActualizarCuaderno">
+                                  <img src="imagenes/save.svg">
+                                  <span class="textBotonAccion">Guardar cuaderno</span>
+                                </button>
+                              </div>
+
+
+                            </div>
+
+                            <div class="contenido-principal">
+                      </div>
+                  </div>
+              </main>
+            </div>
+        </div>
+
+
     </div>
 
+
+    <!-- Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Modal para crear / editar cuaderno -->
+    <div class="modal" id="modalCuaderno">
+      <div class="modal-header">
+        <h3 id="modalCuadernoTitulo">Nuevo cuaderno</h3>
+        <button class="modal-cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <label>Nombre del cuaderno</label>
+        <input type="text" id="inputNombreCuaderno" placeholder="Ej. Análisis de datos">
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secundario modal-cancelar">Cancelar</button>
+        <button class="btn-primario" id="btnGuardarCuaderno">Guardar</button>
+      </div>
+    </div>
     
+    <!-- Modal para confirmar la eliminación -->
+    <div class="modal modal-small" id="modalEliminar">
+      <div class="modal-header">
+        <h3>Eliminar cuaderno</h3>
+        <button class="modal-cerrar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro de eliminar este cuaderno?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secundario modal-cancelar">Cancelar</button>
+        <button class="btn-danger" id="btnConfirmarEliminar">Eliminar</button>
+      </div>
+    </div>
+
+    <!-- Modal editar proyecto -->
+
+    <div class="modal-overlay" id="overlayEditarProyecto"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="modalEditarProyecto">
+        <div class="modal-header">
+            <h3>Editar nombre del proyecto</h3>
+            <button class="modal-cerrar" id="cerrarEditarProyecto">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <label for="inputNombreProyecto">Nombre del proyecto</label>
+            <input
+                type="text"
+                id="inputNombreProyecto"
+                placeholder="Nombre del proyecto"
+            >
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-secundario" id="cancelarEditarProyecto">Cancelar</button>
+            <button class="btn-primario" id="guardarEditarProyecto">Guardar</button>
+        </div>
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="modal-overlay" id="overlayEliminarProyecto"></div>
+
+    <!-- Modal -->
+    <div class="modal modal-small" id="modalEliminarProyecto">
+        <div class="modal-header">
+            <h3>Eliminar proyecto</h3>
+            <button class="modal-cerrar" id="cerrarEliminarProyecto">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <p style="margin:0; font-size:14px; color:#374151;">
+                ¿Estás seguro de que deseas eliminar este proyecto?
+            </p>
+            <p style="margin-top:10px; font-size:13px; color:#dc2626;">
+                ⚠️ Esta acción no se puede deshacer.
+            </p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-secundario" id="cancelarEliminarProyecto">
+                Cancelar
+            </button>
+            <button class="btn-danger" id="confirmarEliminarProyecto">
+                Eliminar
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="modal-overlay" id="overlayProyectos"></div>
+
+    <!-- Modal selector de proyectos -->
+    <div class="modal" id="modalProyectos" style="width: 720px; max-width: 95%;">
+        
+        <div class="modal-header">
+            <h3>Seleccionar proyecto</h3>
+            <button class="modal-cerrar" id="cerrarModalProyectos">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <!-- Buscador fijo -->
+            <div style="position: sticky; top: 0; background:#fff; padding-bottom:10px; z-index:5;">
+                <input
+                    type="text"
+                    id="buscadorProyectos"
+                    placeholder="Buscar proyecto..."
+                    style="width:93%; padding:10px; border-radius:6px; border:1px solid #ccc;"
+                />
+            </div>
+
+            <!-- Lista de proyectos -->
+            <div id="listaProyectos"
+                 style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                        gap:12px; margin-top:15px;">
+            </div>
+
+        </div>
+
+        <div class="modal-footer" style="justify-content: space-between;">
+            <button class="btn-secundario" id="btnNuevoProyecto">
+                ➕ Crear proyecto
+            </button>
+            <button class="btn-primario" id="btnSeleccionarProyecto" disabled>
+                Seleccionar proyecto
+            </button>
+        </div>
+
+    </div>
+
+
+    <div class="modal-overlay" id="overlayCrearProyecto"></div>
+
+    <div class="modal modal-small" id="modalCrearProyecto">
+        <div class="modal-header">
+            <h3>Nuevo proyecto</h3>
+            <button class="modal-cerrar" id="cerrarCrearProyecto">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <label>Nombre del proyecto</label>
+            <input type="text" id="inputNombreProyecto" placeholder="Ej. Indicadores Financieros">
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-secundario" id="cancelarCrearProyecto">Cancelar</button>
+            <button class="btn-primario" id="confirmarCrearProyecto">Crear</button>
+        </div>
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="modal-overlay" id="overlayCompartirProyecto"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="modalCompartirProyecto">
+        <div class="modal-header">
+            <h3>Compartir proyecto</h3>
+            <button class="modal-cerrar" id="cerrarCompartirProyecto">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <!-- Buscador + botón -->
+            <label>Buscar usuario</label>
+            <div style="display:flex; gap:8px; margin-bottom:12px;">
+                <input type="text"
+                       id="inputBuscarUsuario"
+                       placeholder="Nombre o clave de empleado">
+
+                <button class="btn-primario"
+                        id="btnAsignarUsuario"
+                        disabled>
+                    Asignar
+                </button>
+            </div>
+
+            <!-- Lista de usuarios con permiso -->
+            <label>Usuarios con acceso</label>
+            <div id="listaUsuariosProyecto"></div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-secundario" id="cancelarCompartirProyecto">
+                Cerrar
+            </button>
+        </div>
+    </div>
+
 
     <!-- MODAL -->
         <div id="modalFuentes" class="modal-overlay">
@@ -222,23 +539,56 @@
         </div>    
 
 
+    <!-- Comentarios -->
+    <div id="panel-comentarios" class="panel-comentarios oculto">
+      <div class="header-comentarios">
+          <span><strong>Comentarios</strong></span>
+          <button class="btn-comen" id="cerrarComentarios">✕</button>
+      </div>
+
+      <div class="info-celda">
+          Celda activa: <strong id="comentarios-celda-id"></strong>
+      </div>
+
+      <div id="lista-comentarios"></div>
+
+      <div class="nuevo-comentario">
+          <textarea id="texto-comentario" rows="5" placeholder="Escribe un comentario..."></textarea>
+          <button id="agregarComentario">Agregar</button>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
     
-    <!-- Librerias externas -->
+    <!-- Jquery -->
     <script src="js/librerias/jquery-3.7.1.min.js"></script>
     <script type='text/javascript' src='js/librerias/jquery-ui.min.js' charset="UTF-8"></script>
     <link rel="stylesheet" href="js/librerias/jquery-ui.css" />
+    
     <!-- Script locales -->
     <script src="js/layout.js"></script>
     <script src="js/tooltip.js"></script>
+    <script src="js/notificaciones.js"></script>
+
+    <script src="js/menu-proyecto.js"></script>
+    <script src="js/cuadernos.js"></script>
+    <script src="js/proyectos.js"></script>
+    <script src="js/panel-fuentes.js"></script>
+
+
     <script src="js/laboratorio.js"></script>
     <script src="js/celdas-codigo.js"></script>
     <script src="js/fuentes.js"></script>
-    <script src="js/notificaciones.js"></script>
 
-
-
-
-
+    <script src="js/comentarios-celda.js"></script>
 
   </body>
 </html>
