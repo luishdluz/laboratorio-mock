@@ -1,0 +1,133 @@
+/* =============================
+   MENU SUPERIOR
+============================= */
+.menu-superior {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: #f3f4f6;
+    border-bottom: 1px solid #d1d5db;
+    font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* IZQUIERDA */
+.menu-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.menu-logo {
+    height: 28px;
+}
+
+.menu-proyecto {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid silver;
+}
+
+.menu-proyecto:hover {
+    background: #e5e7eb;
+}
+
+/* ACCIONES */
+.menu-acciones {
+    position: relative;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.menu-acciones:hover {
+    background: #e5e7eb;
+}
+
+.submenu-acciones {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    min-width: 160px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+}
+
+.menu-acciones.activo .submenu-acciones {
+    display: block;
+}
+
+.submenu-acciones .accion {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submenu-acciones .accion:hover {
+    background: #f3f4f6;
+}
+
+.submenu-acciones .eliminar {
+    color: #b91c1c;
+}
+
+/* DERECHA */
+.menu-derecha {
+    display: flex;
+    align-items: center;
+}
+
+.btn-guardar {
+    background: #007279;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-guardar:hover {
+    background: #005e63;
+}
+
+/* =============================
+   RESPONSIVO
+============================= */
+@media (max-width: 768px) {
+    .menu-superior {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .menu-izquierda {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .btn-guardar {
+        width: 100%;
+    }
+}
+
+
+.btn-toggle-cuadernos {
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.btn-toggle-cuadernos:hover {
+    background: #e5e7eb;
+}

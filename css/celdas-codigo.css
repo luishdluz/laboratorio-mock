@@ -6,6 +6,19 @@
     padding: 12px;
     font-family: 'JetBrains Mono', monospace;
     border: 1px solid #e5e7eb;
+    margin-bottom: 12px;
+}
+
+
+.btn-play-codigo {
+    background: #007279;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
 }
 
 .celda-codigo.celdaActiva {
@@ -171,6 +184,18 @@
 }
 
 
-
+.explicacion-codigo {
+    margin-top: 10px;
+    background: #e5e7eb;
+    border-left: 4px solid #172E8F;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #000000;
+    display: none;
+    white-space: pre-wrap;
+    font-family: monospace;
+    line-height: 1.5;
+}
 
 

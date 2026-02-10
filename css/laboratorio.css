@@ -1,9 +1,4 @@
-.contenido-principal {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px;
-}
+
 
 /* Celda */
 .celda-texto {
@@ -13,6 +8,7 @@
     padding: 12px 14px;
     cursor: text;
     transition: box-shadow 0.2s ease, border 0.2s ease;
+    margin-bottom: 12px;
 }
 
 .celda-texto:hover {
@@ -230,7 +226,7 @@
 /* Contenedor interno del tab activo */
 .tab-panel {
   position: relative;
-  padding: 15px;
+  /*padding: 15px;*/
 }
 
 /* Botón "Agregar fuente" fijo */
