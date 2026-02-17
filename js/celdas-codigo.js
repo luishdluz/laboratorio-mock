@@ -179,7 +179,7 @@ function simularEjecucion(codigo) {
         return 'La suma es: 15';
     }
 
-    if (codigo.startsWith('# EJEMPLO LAB1') || codigo.startsWith('# LAB2')) {
+    if (codigo.startsWith('# EJEMPLO LAB1') || codigo.startsWith('# LAB2') || codigo.startsWith('#LAB BD')) {
         return simularEjecucionCodigo(codigo);
     }
 
@@ -433,7 +433,27 @@ Name: Frecuencia Teórica, dtype: float64
 <img src="imagenes/e22.png" class="img-salida">
 
         `.trim();
-    }        
+    }   
+
+if (codigoLimpio.startsWith('#LAB BD')) {
+return `
+Se consultó la fuente institucional correctamente...
+
+╒════════════╤══════╤═══════╤══════╤══════╕
+│ fecha      │   c1 │    c2 │   c3 │   c4 │
+╞════════════╪══════╪═══════╪══════╪══════╡
+│ 2004-01-02 │ 6.05 │ 18.44 │ 4.22 │ 6.11 │
+├────────────┼──────┼───────┼──────┼──────┤
+│ 2004-01-05 │ 5.78 │  6.85 │ 4.18 │ 5.83 │
+├────────────┼──────┼───────┼──────┼──────┤
+│ 2004-01-06 │ 5.6  │  7.65 │ 4.18 │ 5.64 │
+╘════════════╧══════╧═══════╧══════╧══════╛
+
+<img src="imagenes/e31.png" class="img-salida">
+
+`.trim();
+}
+
 }
 
 
